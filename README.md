@@ -1,95 +1,116 @@
+<<<<<<< HEAD
 # git-wip
 Wip your git with quick commands and WIP commits
+=======
+>>>>>>> 096e629 (Adds doco)
 
-`git-wip` is a simple Git subcommand that helps manage your "WIP" (Work In Progress) commits. It allows you to create or amend a "WIP" commit to track ongoing work in a Git repository.
+# Git WIP Script
+
+This script helps manage WIP (Work In Progress) commits in your Git repository. It allows you to create or amend a WIP commit, view diffs, check status, show git log, and more, with easy-to-use commands.
 
 ## Features
 
-- **WIP Commit Management**:
-  - If the last commit is a "WIP" commit, you can amend it.
-  - If the last commit is not a "WIP" commit, a new "WIP" commit is created.
-  - If no changes are detected, it reports the current WIP state and exits.
-  
-- **Minimal User Interaction**: The script only asks for user input when necessary using simple `y/n` options.
+- **WIP Commit**: Create or amend a WIP commit.
+- **Show Diff**: View the changes made in the repository.
+- **Show Status**: View the current status of your working directory.
+- **Custom Commit Message**: Amend or create a WIP commit with a custom message (default is "WIP").
+- **Git Log**: View the git log.
+- **Help**: Show the available options and their descriptions.
+
+## Available Commands
+
+- `w`: Create or amend a WIP commit.
+- `q`: Quit the script without making any changes.
+- `d`: Show the diff of the changes.
+- `s`: Show the current git status.
+- `m`: Amend the WIP commit with a custom message (default: "WIP").
+- `l`: Show the git log.
+- `?`: Display the available options and their descriptions.
+
+## How to Use
+
+1. **Download the Script**: Ensure that the script is executable by running `chmod +x git-wip.sh`.
+2. **Run the Script**: Navigate to your Git repository and execute the script with `./git-wip.sh`.
+3. **Select Options**: Once the script is running, it will show the available options. You can select an option by typing the corresponding letter and pressing Enter.
+
+## How It Works
+
+1. **Check Git Repository**: The script first checks if the current directory is a Git repository. If it is not, it exits.
+2. **Show Status**: The script checks if there are any changes in the repository. If there are changes, it will display the status and allow you to create or amend a WIP commit. If there are no changes, it will still show the available options and allow you to perform actions like viewing the git log, diff, or status.
+3. **Amend/Create WIP Commit**: If the last commit is a WIP, the script will amend it; otherwise, it will create a new WIP commit. You can also provide a custom message for the WIP commit.
 
 ## Installation
 
-1. Download or clone this repository to your local machine.
-2. Rename the script to `git-wip` (if not already done).
-3. Make it executable:
+1. Download the `git-wip.sh` script to your repository.
+2. Make the script executable by running the following command:
    ```bash
-   chmod +x git-wip
-Add git-wip to your PATH by moving it to a directory that is already in your PATH, e.g., ~/bin:
+   chmod +x git-wip.sh
+   ```
 
-bash
-Copy
-Edit
-mkdir -p ~/bin
-mv git-wip ~/bin/
-Ensure ~/bin is included in your PATH:
+## Adding `git-wip` to PATH
 
-bash
-Copy
-Edit
-export PATH="$HOME/bin:$PATH"
-Reload the shell configuration:
+To use `git-wip` as a Git subcommand, add the script to your PATH.
 
-bash
-Copy
-Edit
-source ~/.bashrc  # or ~/.zshrc
-Usage
-After installation, you can use git wip as a subcommand directly from your Git repositories.
+1. Move the script to a directory in your PATH, e.g., `/usr/local/bin` or `~/bin`:
+   ```bash
+   mv git-wip.sh /usr/local/bin/git-wip
+   ```
+2. You can now use it as a Git subcommand:
+   ```bash
+   git wip
+   ```
 
-If there are changes:
-If the last commit is "WIP", the script will prompt you to amend the commit or create a new one.
-If the last commit is not "WIP", the script will prompt you to create a new "WIP" commit.
-If there are no changes:
-The script will check the last commit message:
-If it's a "WIP" commit, it will exit with a message indicating the WIP state.
-If it's not a "WIP" commit, the script will exit without changes.
-Example Usage:
-Case 1: Last commit is a "WIP" commit and there are changes:
-bash
-Copy
-Edit
-$ git wip
-The last commit is a WIP commit.
-Do you want to amend this commit? (y/n): y
-WIP commit updated.
-Case 2: Last commit is not a "WIP" commit and there are changes:
-bash
-Copy
-Edit
-$ git wip
+## Example Usage
+
+### Case 1: User has changes and selects `w` (WIP commit)
+
+```bash
+$ ./git-wip.sh
 The last commit is not a WIP commit.
-Do you want to create a new WIP commit? (y/n): y
+Available options:
+w - WIP commit (amend or create)
+q - Quit
+d - Show diff
+s - Show git status
+m - Amend WIP commit with custom message (default: 'WIP')
+l - Show git log
+? - Show options help
+Enter your choice (w/q/d/s/m/l/?): w
 New WIP commit created.
-Case 3: No changes detected:
-bash
-Copy
-Edit
-$ git wip
-No changes detected. Exiting.
-Case 4: Last commit is a "WIP" commit, but no changes:
-bash
-Copy
-Edit
-$ git wip
-The last commit is a WIP commit and there are no changes.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+```
 
-Contributing
-Feel free to fork this repository, open issues, or submit pull requests to contribute to the script.
+### Case 2: User has no changes and selects `l` (git log)
 
-vbnet
-Copy
-Edit
+```bash
+$ ./git-wip.sh
+No changes detected.
+Available options:
+w - WIP commit (amend or create)
+q - Quit
+d - Show diff
+s - Show git status
+m - Amend WIP commit with custom message (default: 'WIP')
+l - Show git log
+? - Show options help
+Enter your choice (w/q/d/s/m/l/?): l
+Showing git log:
+abcdef1 Commit message 1
+1234567 Commit message 2
+```
 
-### Key Updates:
-- **Git Subcommand**: The script is now a `git` subcommand (`git wip`).
-- **Usage Instructions**: The README explains how to use the script as a Git subcommand and how to install it globally.
-- **Simplified Workflow**: The process of installing and using the script is now more streamlined for users familiar with Git.
+### Case 3: User selects `m` (Custom commit message)
 
-Let me know if you need further assistance!
+```bash
+$ ./git-wip.sh
+Enter custom message for the WIP commit (or leave blank for default 'WIP'):
+Message: My custom WIP commit message
+New WIP commit created with message: My custom WIP commit message
+```
+
+## Contributing
+
+Feel free to fork the repository, submit pull requests, or open issues to improve the script.
+
+## License
+
+This script is released under the MIT License. See the LICENSE file for more details.
