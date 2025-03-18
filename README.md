@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-# git-wip
-Wip your git with quick commands and WIP commits
-=======
->>>>>>> 096e629 (Adds doco)
-
-# Git WIP Script
+# git wip
 
 This script helps manage WIP (Work In Progress) commits in your Git repository. It allows you to create or amend a WIP commit, view diffs, check status, show git log, and more, with easy-to-use commands.
 
@@ -112,5 +106,6 @@ New WIP commit created with message: My custom WIP commit message
 Feel free to fork the repository, submit pull requests, or open issues to improve the script.
 
 ## License
+GPL v3.0
 
 This script is released under the MIT License. See the LICENSE file for more details.
