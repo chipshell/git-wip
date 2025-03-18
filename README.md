@@ -59,7 +59,7 @@ To use `git-wip` as a Git subcommand, add the script to your PATH.
 ### Case 1: User has changes and selects `w` (WIP commit)
 
 ```bash
-$ ./git-wip.sh
+$ git wip
 The last commit is not a WIP commit.
 Available options:
 w - WIP commit (amend or create)
@@ -76,7 +76,7 @@ New WIP commit created.
 ### Case 2: User has no changes and selects `l` (git log)
 
 ```bash
-$ ./git-wip.sh
+$ git wip
 No changes detected.
 Available options:
 w - WIP commit (amend or create)
@@ -107,5 +107,3 @@ Feel free to fork the repository, submit pull requests, or open issues to improv
 
 ## License
 GPL v3.0
-
-This script is released under the MIT License. See the LICENSE file for more details.
